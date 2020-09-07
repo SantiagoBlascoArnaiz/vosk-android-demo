@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Vosk Demo</string>
-    <string name="recognize_file">Recognize File</string>
-    <string name="recognize_microphone">Recognize Microphone</string>
-    <string name="stop_microphone">Stop Microphone</string>
-    <string name="preparing">Preparing the recognizer\n</string>
-    <string name="ready">Ready\n</string>
-    <string name="failed">Failed to init recognizer %s\n</string>
+    <string name="app_name">TFG Vosk Demo</string>
+    <string name="statics_options">Opciones de datos</string>
+    <string name="recognize_microphone">Reconocer micrófono</string>
+    <string name="stop_microphone">Parar micrófono</string>
+    <string name="preparing">Preparando el reconocedor\n</string>
+    <string name="ready">Listo</string>
+    <string name="failed">Fallo al inicializar el reconocedor %s\n</string>
     <string name="elapsed">Result %s elapsed %d milliseconds\n</string>
-    <string name="starting">Starting\n</string>
-    <string name="say_something">Say something\n</string>
+    <string name="starting">Arrancando\n</string>
+    <string name="say_something">Dí algo:\n\n</string>
+    <string name="statics">Datos de reconocimiento activados\n</string>
+    <string name="nostatics">Datos de reconocimiento desactivados\n</string>
+    <string name="changeModels">Cambiar de modelo</string>
 
 </resources>

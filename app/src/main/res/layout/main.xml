@@ -2,23 +2,57 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@android:color/background_light"
     android:orientation="vertical"
     android:padding="16dp">
+
     <Button
-        android:id="@+id/recognize_file"
+        android:id="@+id/stats_options"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/recognize_file"/>
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round"
+        android:text="@string/statics_options" />
+
     <Button
-        android:id="@+id/recognize_mic"
+        android:id="@+id/change_model"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/recognize_microphone"/>
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round"
+        android:text="@string/changeModels" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/recognize_mic"
+            android:layout_width="75dp"
+            android:layout_height="71dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/mic_in" />
+
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/result_text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="@color/Lighter_gray"
         android:gravity="bottom"
         android:scrollbars="vertical"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
 </LinearLayout>
