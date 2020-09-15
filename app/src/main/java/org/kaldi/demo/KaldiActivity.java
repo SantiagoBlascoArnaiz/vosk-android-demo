@@ -39,6 +39,10 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 
+
+/**
+ * The type Kaldi activity.
+ */
 public class KaldiActivity extends Activity implements
         RecognitionListener {
 
@@ -57,7 +61,7 @@ public class KaldiActivity extends Activity implements
 
     static private int currentModel = 0;
     static private String currentModelPath = "vosk-spanish-model";
-    static private final int TOTAL_MODELS = 2;
+    static private final int TOTAL_MODELS = 3;
 
 
     static private boolean recognitionStats = false;
@@ -69,6 +73,9 @@ public class KaldiActivity extends Activity implements
 
     private Model model;
     private SpeechRecognizer recognizer;
+    /**
+     * The Result view.
+     */
     TextView resultView;
 
     @Override
@@ -114,8 +121,11 @@ public class KaldiActivity extends Activity implements
     }
 
     private static class SetupTask extends AsyncTask<Void, Void, Exception> {
+
+        //The Activity reference.
         WeakReference<KaldiActivity> activityReference;
 
+        //Instantiates a new setup task.
         SetupTask(KaldiActivity activity) {
             this.activityReference = new WeakReference<>(activity);
         }
@@ -181,7 +191,7 @@ public class KaldiActivity extends Activity implements
         if (recognitionStats){
             resultView.append(hypothesis + "\n");
         }else{
-            resultView.append(getSpeechResult(hypothesis) + "\n");
+            resultView.append(getSpeechResult(hypothesis) + "\n\n");
         }
 
     }
@@ -192,6 +202,12 @@ public class KaldiActivity extends Activity implements
         //resultView.append(hypothesis + "\n");
     }
 
+    /**
+     * Transform a raw transcription to a readable format
+     *
+     * @param hypothesis the transcription with raw format
+     * @return the string in readable format
+     */
     public String getSpeechResult(String hypothesis){
 
 
@@ -227,7 +243,7 @@ public class KaldiActivity extends Activity implements
                 findViewById(R.id.change_model).setEnabled(false);
                 break;
             case STATE_READY:
-                resultView.setText(getString(R.string.ready)  + " (" + currentModelPath + ")\n");
+                resultView.setText(getString(R.string.ready)  + " (" + currentModelPath + ")\n" + getString(R.string.say_something));
                 ((Button) findViewById(R.id.recognize_mic)).setBackgroundResource(R.drawable.mic_in);
                 findViewById(R.id.stats_options).setEnabled(true);
                 findViewById(R.id.recognize_mic).setEnabled(true);
@@ -241,7 +257,7 @@ public class KaldiActivity extends Activity implements
                 break;
             case STATE_MIC:
                 ((Button) findViewById(R.id.recognize_mic)).setBackgroundResource(R.drawable.mic_out);
-                resultView.setText(getString(R.string.say_something));
+                resultView.setText(getString(R.string.listening));
                 findViewById(R.id.stats_options).setEnabled(false);
                 findViewById(R.id.recognize_mic).setEnabled(true);
                 findViewById(R.id.change_model).setEnabled(false);
@@ -271,6 +287,9 @@ public class KaldiActivity extends Activity implements
         ((Button) findViewById(R.id.recognize_mic)).setBackgroundResource(R.drawable.mic_nr);
     }
 
+    /**
+     * Switch between data display modes.
+     */
     public void recognizeStats() {
 
         if (recognitionStats){
@@ -282,6 +301,9 @@ public class KaldiActivity extends Activity implements
         }
     }
 
+    /**
+     * Switch between models.
+     */
     public void changeModel(){
         currentModel = (currentModel + 1)%TOTAL_MODELS;
 
@@ -292,6 +314,9 @@ public class KaldiActivity extends Activity implements
             case 1:
                 currentModelPath = "model-android";
                 break;
+            case 2:
+                currentModelPath = "timit-model";
+                break;
         }
         Log.d("Santiago", "MODELO" + currentModel + currentModelPath);
         setUiState(STATE_CHANGE_MODEL);
@@ -300,6 +325,9 @@ public class KaldiActivity extends Activity implements
         new SetupTask(this).execute();
     }
 
+    /**
+     * Create the speech recognizer, if it's created delete it.
+     */
     public void recognizeMicrophone() {
         if (recognizer != null) {
             setUiState(STATE_DONE);

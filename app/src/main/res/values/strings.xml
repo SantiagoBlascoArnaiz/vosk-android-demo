@@ -2,17 +2,18 @@
 <resources>
 
     <string name="app_name">TFG Vosk Demo</string>
-    <string name="statics_options">Opciones de datos</string>
+    <string name="statics_options">Visualización de datos ampliada</string>
     <string name="recognize_microphone">Reconocer micrófono</string>
     <string name="stop_microphone">Parar micrófono</string>
     <string name="preparing">Preparando el reconocedor\n</string>
-    <string name="ready">Listo</string>
+    <string name="ready">El modelo está listo</string>
     <string name="failed">Fallo al inicializar el reconocedor %s\n</string>
     <string name="elapsed">Result %s elapsed %d milliseconds\n</string>
     <string name="starting">Arrancando\n</string>
-    <string name="say_something">Dí algo:\n\n</string>
-    <string name="statics">Datos de reconocimiento activados\n</string>
-    <string name="nostatics">Datos de reconocimiento desactivados\n</string>
+    <string name="say_something">Pulsa el micrófono y di algo</string>
+    <string name="listening">Micrófono reconociendo voz...\nHas dicho:\n</string>
+    <string name="statics">Visualización de datos ampliada activada\n</string>
+    <string name="nostatics">Visualización de datos ampliada desactivada\n</string>
     <string name="changeModels">Cambiar de modelo</string>
 
 </resources>
